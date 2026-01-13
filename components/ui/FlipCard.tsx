@@ -14,7 +14,8 @@ interface FlipCardProps {
   logos?: string[];
   siteUrl: string;
   repoUrls?: RepoUrl[]
-  textColor?: string
+  textColor?: string,
+  backgroundColor?: string
 }
 
 export default function FlipCard({
@@ -24,7 +25,8 @@ export default function FlipCard({
   logos = [],
   siteUrl,
   repoUrls = [],
-  textColor
+  textColor,
+  backgroundColor="bg-white"
 }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false);
 
@@ -41,7 +43,7 @@ export default function FlipCard({
       >
         {/* FRONT */}
         <div 
-        className="bg-center bg-cover absolute inset-0 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center backface-hidden"
+        className={`${backgroundColor} bg-center bg-cover absolute inset-0 rounded-xl shadow-lg flex flex-col items-center justify-center backface-hidden`}
         style={{ backgroundImage: background ? `url(${background})` : undefined }}
         >
         
