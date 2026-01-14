@@ -4,62 +4,74 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="w-[50vw] h-[60vh] mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Contact Me</h2>
+    <div className="w-full max-w-2xl min-h-[60vh] mx-auto p-6 bg-white rounded-lg shadow-md flex flex-col">
+      
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-2">
+        <h2 className="text-2xl font-bold">Contact Me</h2>
+        {submitted && (
+          <p className="text-green-600">Thank you! Your message has been sent.</p>
+        )}
+      </div>
 
-      {submitted && (
-        <p className="text-green-600 mb-4">Thank you! Your message has been sent.</p>
-      )}
-
+      {/* Form */}
       <form
-        action="https://formspree.io/f/xvzppoob" 
+        action="https://formspree.io/f/xvzppoob"
         method="POST"
-        className="space-y-4"
-        onSubmit={() => setSubmitted(true)} 
+        onSubmit={() => setSubmitted(true)}
+        className="flex flex-col flex-1 gap-4"
       >
-
-        <div className="flex justify-between">
-            <div className="flex items-center">
-            <label htmlFor="name" className="mb-1 font-medium">Name</label>
+        {/* Name + Email */}
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex items-center gap-2 flex-1 min-w-0">
+            <label htmlFor="name" className="whitespace-nowrap font-medium">
+              Name
+            </label>
             <input
-                type="text"
-                name="name"          
-                id="name"
-                className="w-max-xl border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mx-5 h-8"
-                required
+              type="text"
+              name="name"
+              id="name"
+              required
+              className="flex-1 min-w-0 border border-gray-300 rounded-md p-2 h-8 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            </div>
+          </div>
 
-            <div className="flex items-center">
-            <label htmlFor="email" className="mb-1 font-medium">Email</label>
+          <div className="flex items-center gap-2 flex-1 min-w-0">
+            <label htmlFor="email" className="whitespace-nowrap font-medium">
+              Email
+            </label>
             <input
-                type="email"
-                name="email"         
-                id="email"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mx-5 h-8"
-                required
+              type="email"
+              name="email"
+              id="email"
+              required
+              className="flex-1 min-w-0 border border-gray-300 rounded-md p-2 h-8 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            </div>
-
+          </div>
         </div>
 
-        <div className="flex flex-col">
-          <label htmlFor="message" className="mb-1 font-medium">Message</label>
+        {/* Message */}
+        <div className="flex flex-col flex-1">
+          <label htmlFor="message" className="mb-1 font-medium">
+            Message
+          </label>
           <textarea
-            name="message"       
+            name="message"
             id="message"
-            rows={5}
-            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
+            className="flex-1 resize-none border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
+       <div>
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+          className="mt-auto bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
         >
           Send Message
         </button>
+
+       </div>
       </form>
     </div>
   );

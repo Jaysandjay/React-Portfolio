@@ -13,8 +13,8 @@ body {
   width: 48px;              
   height: 48px;
   object-fit: contain;       
-  animation: rotate-animation 5s infinite linear;
-  transform-style: preserve-3d;
+  /* animation: rotate-animation 5s infinite linear;
+  transform-style: preserve-3d; */
   margin: 20px;
 }
 
